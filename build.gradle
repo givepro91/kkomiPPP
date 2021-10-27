@@ -1,0 +1,46 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("io.spring.gradle:dependency-management-plugin:1.0.6.RELEASE")
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:2.1.0.RELEASE"
+        classpath("gradle.plugin.com.ewerk.gradle.plugins:querydsl-plugin:1.0.10")
+    }
+}
+
+plugins {
+    id "ua.eshepelyuk.ManifestClasspath" version "1.0.0"
+}
+
+allprojects {
+    apply plugin: 'idea'
+    apply plugin: 'eclipse'
+
+    group = 'com.givepro.kkomi'
+    version = '1.0.0-SNAPSHOT'
+}
+
+subprojects { subproject ->
+    apply plugin: 'java'
+    apply plugin: 'eclipse-wtp'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    compileJava.options.encoding = 'UTF-8'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url 'https://oss.jfrog.org/libs-snapshot' }
+    }
+
+//    dependencyManagement {
+//        imports {
+//            mavenBom 'org.springframework.cloud:spring-cloud-aws:2.0.1.RELEASE'
+//        }
+//    }
+}
