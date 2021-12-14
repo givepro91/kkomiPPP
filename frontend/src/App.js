@@ -5,6 +5,8 @@ import HeaderComponent from './components/HeaderComponent'
 import FooterComponent from "./components/FooterComponent";
 import CreateBoardComponent from './components/CreateBoardComponent';
 import ReadBoardComponent from './components/ReadBoardComponent';
+import LoginComponent from "./components/LoginComponent";
+import RegisterComponent from "./components/RegisterComponent";
 
 function App() {
     return (
@@ -13,6 +15,8 @@ function App() {
                 <HeaderComponent/>
                     <div className="container">
                         <Switch>
+                            <Route path="/login" component={LoginComponent}/>
+                            <Route path="/user/register" component={RegisterComponent}/>
                             <Route path="/" exact component={ListBoardComponent}/>
                             <Route path="/board" component={ListBoardComponent}/>
                             <Route path="/create-board/:id" component={CreateBoardComponent}/>
